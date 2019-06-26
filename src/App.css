@@ -1,0 +1,56 @@
+*{
+  box-sizing:  border-box;
+}
+
+.App {
+  background: #43C6AC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #F8FFAE, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #F8FFAE, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 100vh;
+}
+.header {
+  display: flex;
+  align-items: center;
+  /* actual words of header */
+  font-size:60px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 25px;
+  text-align: right;
+  border-bottom: 2px solid white;
+}
+
+.logo {
+  width: 100px;
+  padding-right: 25px;
+}
+
+.text-input{
+  position: absolute;
+  bottom: 0;
+  height:40px;
+  width: 100%;
+  border-top: 1px solid white;
+  display:flex;
+  align-items: center;
+}
+
+.text-input input{
+  width: calc(100% - 50px);
+  height: 100%;
+  font-size: 24px;
+}
+
+.text-input button{
+  width: 45px;
+  height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text-input button:hover {
+  background:greenyellow;
+  color: white;
+}
