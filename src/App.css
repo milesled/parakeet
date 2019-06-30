@@ -33,17 +33,27 @@
 .text-input{
   display: flex;
   position: absolute;
+  bottom: 0px;
+  height: 50px;
+  border: 1px solid white;
+  width: calc(100% - 10px);
   background: rgba(0, 0, 0, 0.7);
   font-size: 24px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border-radius: 25px;
   color: white;
   margin: 5px;
   padding-top: 8px;
   padding-left: 14px;
-  bottom: 0px;
-  height: 50px;
-  width: calc(100% - 10px);
   align-content: center;
+}
+
+.send{
+  position: absolute;
+  right: 10px;
+  bottom: 7px;
+  width: 36px;
+  height: 36px;
 }
 
 /* styling of text area 
@@ -56,14 +66,6 @@
   border: none;
 }
 */
-
-.send{
-  position: absolute;
-  right: 10px;
-  bottom: 7px;
-  width: 36px;
-  height: 36px;
-}
 
 /* styling of button 
 .text-input button{
