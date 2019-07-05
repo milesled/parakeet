@@ -21,14 +21,14 @@ class TextInput extends React.Component {
     render() {
         var {text} = this.state
         return(<div>
-            <input value={text}
+            <input className = "text-input" value={text}
                 placeholder = "Write your message here!"
                 onChange={e=> this.setState({text: e.target.value})}
                 onKeyPress = {this.keyPress}
             />
             <button className = "send" onClick={this.send}>
                 <img src={sendButton} className='sendButton' alt='send'/> 
-            </button>    
+            </button>  
         </div>)
     }
 }

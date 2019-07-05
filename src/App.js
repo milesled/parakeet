@@ -8,7 +8,7 @@ class App extends React.Component {
   state = {
     messages:[],
     name: ' ',
-    editName:false,
+    editName: false,
   }
 
   gotMessage = (text) => {

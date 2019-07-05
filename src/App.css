@@ -29,8 +29,8 @@
   padding-right: 25px;
 }
 
-/* this is working on the text input div */
-.text-input > input {
+/* this is working on the text input */
+.text-input {
   display: flex;
   position: absolute;
   bottom: 0px;
@@ -38,14 +38,17 @@
   border: 1px solid white;
   width: calc(100% - 10px);
   background: rgba(0, 0, 0, 0.7);
-  font-size: 24px;
+  font-size: 20px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  border-radius: 25px;
+  border-radius: 23px;
   color: white;
-  margin: 5px;
-  padding-top: 8px;
-  padding-left: 14px;
+  margin: 7px;
+  padding-left: 17px;
   align-content: center;
+}
+
+.text-input:focus, .send:focus {
+  outline: none;
 }
 
 /* formatting the button */
@@ -54,38 +57,65 @@
   height: 36px;
 }
 
+.sendButton:hover {
+  cursor: pointer;
+}
+
 .send{
   border:none;
   background:none;
   position: absolute;
-  right: 10px;
-  bottom: 7px;
+  right: 7px;
+  bottom: 10px;
 }
 
-/* styling of text area 
-.text-input input{
-  background: black;
-  color: white;
-  flex-grow: 2;
-  font-size: 24px;
-  border-radius: 25px;
-  border: none;
+/* ths deals with the messaging space formatting*/
+.messages{
+  overflow: auto;
+  height:calc(100% - 180px);
+  padding-top:10px;
 }
-*/
 
-/* styling of button 
-.text-input button{
-  width: px;
-  font-size: 100%;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
+/* all the following works on the bubble formatting */
+.bubble-wrap{
+  width:100%;
+  padding:8px 20px;
+  display:flex;
+  position: relative;
 }
-*/
-
-/* what happens when you hover 
-.text-input button:hover {
-  background:greenyellow;
-  color: white;
+.bubble-wrap[from="me"] {
+  flex-direction:row-reverse;
 }
-*/
+.bubble{
+  border-radius:11px;
+  padding: 8px 12px;
+  font-size: 14px;
+  position:relative;
+  margin-left:5px;
+}
+.bubble:before{
+  content:"";
+  width:12px;
+  height:12px;
+  transform:rotate(45deg);
+  background:rgb(250,250,250);
+  position:absolute;
+  left:-4px;
+  top:15px
+}
+.bubble-wrap[from="me"] .bubble:before{
+  left:auto;
+  right:-6px;
+}
+.bubble:after{
+  content:"";
+  background:rgb(250, 250, 250);
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  border-radius:10px;
+}
+.bubble > span {
+  color:black;
+  position:relative;
+  z-index:101;
+}
