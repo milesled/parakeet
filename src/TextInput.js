@@ -8,11 +8,14 @@ class TextInput extends React.Component {
     }
 
     send = (e) => {
+        if (this.state.text !== "") {
         this.props.sendMessage(this.state.text)
         this.setState({ text: "" })
+        }
     }
 
     keyPress = (e) => {
+        
         if(e.key==='Enter'){
             this.send()
         }

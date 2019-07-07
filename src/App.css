@@ -47,7 +47,7 @@
   align-content: center;
 }
 
-.text-input:focus, .send:focus {
+*:focus {
   outline: none;
 }
 
