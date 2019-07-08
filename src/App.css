@@ -81,6 +81,7 @@
   width:100%;
   padding:8px 20px;
   display:flex;
+  align-items: center;
   position: relative;
 }
 .bubble-wrap[from="me"] {
@@ -91,7 +92,7 @@
   padding: 8px 12px;
   font-size: 14px;
   position:relative;
-  margin-left:5px;
+  margin-left:13px;
 }
 .bubble:before{
   content:"";
@@ -101,7 +102,7 @@
   background:rgb(250,250,250);
   position:absolute;
   left:-4px;
-  top:15px
+  top:12px
 }
 .bubble-wrap[from="me"] .bubble:before{
   left:auto;
@@ -116,6 +117,32 @@
 }
 .bubble > span {
   color:black;
-  position:relative;
+  position: relative;
   z-index:101;
+}
+
+/* the following style is dedicated to the name picker */
+.namePicker {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  margin-left: auto;
+}
+.username, .edit-username {
+  font-size: 24px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding-bottom: 0px;
+  display: flex;
+  align-items: center;
+}
+.name-input {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
 }

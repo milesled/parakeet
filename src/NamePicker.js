@@ -4,10 +4,10 @@ import {FiEdit} from 'react-icons/fi'
 function NamePicker({ name, editName, changeName, setEditName }) {
 if (editName) {
     return (<div className="edit-username">
-      <input value={name} className="name-input"
+      <input placeholder = "Please enter new name" className="name-input"
         onChange={e => changeName(e.target.value)}
       />
-      <button className="name-button" 
+      <button style = {{ marginLeft: 10}} className="name-button" 
         onClick={() => setEditName(false)}>
         OK
       </button>
@@ -15,7 +15,7 @@ if (editName) {
   } else {
     return (<div className="username">
       {name || "Set Username:"}
-      <FiEdit style={{ marginLeft: 10, cursor: 'pointer' }}
+      <FiEdit className = "icon" style = {{ marginLeft: 10, cursor: 'pointer' } }
         onClick={() => setEditName(true)}
       />
     </div>)

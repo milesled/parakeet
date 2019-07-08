@@ -5,49 +5,51 @@ import TextInput from './TextInput'
 import NamePicker from './NamePicker'
 
 class App extends React.Component {
-  
+
   state = {
-    messages:[],
+    messages: [],
     /* this is for the namepicker */
-    name: ' ',
+    name: 'Miles',
     editName: false,
   }
 
-  gotMessage = (text) => {
-    var newMessagesArray = [...this.state.messages, text]
-    this.setState({messages: newMessagesArray})
-  }
-
-  setEditName = (truefalse) => {
-    this.setState({editName: truefalse});
+  gotMessage = (l) => {
+    const message = {
+      text: l,
+      from: this.state.name
+    }
+    var newMessagesArray = [message, ...this.state.messages]
+    this.setState({ messages: newMessagesArray })
   }
 
   render() {
-  var {messages} = this.state
-  var newName
-  return (
-    <div className="App">
-      <header className="header">
-      <img src={tweet} className="logo" alt="" />
-        Parakeet
-      <NamePicker 
-        name={this.state.name} 
-        editName={this.state.editName}
-        changeName={newName}
-        setEditName = {this.setEditName} />
-      </header>
-      <main className = "messages">
-        {messages.map((m, i) => {
-          return <div key={i} className="bubble-wrap">
-          <div className = "bubble">
-            <span>{m}</span>
+    var { messages } = this.state
+    return (
+      <div className="App">
+        <header className="header">
+          <img src={tweet} className="logo" alt="" />
+          Parakeet
+      <div className="namePicker">
+            <NamePicker
+              name={this.state.name}
+              editName={this.state.editName}
+              changeName={name => this.setState({ name })}
+              setEditName={editName => this.setState({ editName })} />
           </div>
-          </div>
-        })}
-      </main>
-      <TextInput sendMessage={this.gotMessage} />
-    </div>
-  );
+        </header>
+        <main className="messages">
+          {messages.map((m, i) => {
+            return <div key={i} className="bubble-wrap">
+                {m.from}
+              <div className="bubble">
+                <span>{m.text}</span>
+              </div>
+            </div>
+          })}
+        </main>
+        <TextInput sendMessage={this.gotMessage} />
+      </div>
+    );
   }
 }
 
