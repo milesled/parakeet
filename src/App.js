@@ -81,8 +81,8 @@ class App extends React.Component {
     var { name, messages } = this.state
     return (
       <div className="App">
+        <title>Parakeet App</title>
         <header className="header">
-          <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
           <img src={tweet} className="logo" alt="" />
           Parakeet
       <div className="namePicker">
