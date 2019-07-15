@@ -1,5 +1,6 @@
 import React from 'react'
 import sendButton from './send.png'; 
+import {FiCamera} from 'react-icons/fi'
 
 class TextInput extends React.Component {
 
@@ -32,6 +33,7 @@ class TextInput extends React.Component {
             <button className = "send" onClick={this.send}>
                 <img src={sendButton} className='sendButton' alt='send'/> 
             </button>  
+            <button className = "pic-button" onClick={ this.props.showCamera }> <FiCamera className="cam-button"/> </button>
         </div>)
     }
 }

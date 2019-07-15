@@ -34,14 +34,16 @@
   display: flex;
   position: absolute;
   bottom: 0px;
+  left: 60px;
   height: 50px;
   border: 1px solid white;
-  width: calc(100% - 10px);
+  width: calc(100% - 72px);
   background: rgba(0, 0, 0, 0.7);
   font-size: 20px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border-radius: 23px;
   color: white;
+  margin-left: 60px;
   margin: 7px;
   padding-left: 17px;
   align-content: center;
@@ -145,4 +147,20 @@
   font-size: 16px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: white;
+}
+
+.cam-button {
+  height: 40px;
+  width: 40px;
+  
+}
+
+.pic-button {
+  position: absolute;
+  display: flex;
+  left: 8px;
+  bottom: 12px;
+  background: lightgoldenrodyellow;
+  border: none;
+  border-radius: 15px;
 }

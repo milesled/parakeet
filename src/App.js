@@ -3,6 +3,7 @@ import './App.css';
 import tweet from './parakeet-alt.png'
 import TextInput from './TextInput'
 import NamePicker from './NamePicker'
+import Camera from 'react-snap-pic'
 import * as firebase from "firebase/app"
 import "firebase/firestore"
 import "firebase/storage"
@@ -11,9 +12,9 @@ class App extends React.Component {
 
   state = {
     messages: [],
-    /* this is for the namepicker */
     name: 'Miles',
     editName: false,
+    showCamera: false,
   }
 
   /* <===========================> */
@@ -76,9 +77,16 @@ class App extends React.Component {
   }
 
   /* <===========================> */
+  
+  takePicture = (img) => {
+    console.log(img)
+    this.setState({showCamera: false})
+  }
+
+  /* <===========================> */
 
   render() {
-    var { name, messages } = this.state
+    var { name, messages} = this.state
     return (
       <div className="App">
         <title>Parakeet App</title>
@@ -103,8 +111,9 @@ class App extends React.Component {
               </div>
             </div>
           })}
-        </main>
-        <TextInput sendMessage={this.gotMessage} />
+        </main> 
+        {this.state.showCamera && <Camera takePicture={this.takePicture} />}
+        <TextInput sendMessage={this.gotMessage} showCamera={() => this.setState({showCamera: true})} />
       </div>
     );
   }
