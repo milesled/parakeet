@@ -78,15 +78,20 @@ class App extends React.Component {
 
   /* <===========================> */
   
-  takePicture = (img) => {
-    console.log(img)
-    this.setState({showCamera: false})
+  takePicture = async (img) => {
+    this.setState({showCamera:false})
+    const imgID = Math.random().toString(36).substring(7);
+    var storageRef = firebase.storage().ref();
+    var ref = storageRef.child(imgID+'.jpg');
+    await ref.putString(img, 'data_url')
+    this.send({img: imgID})
+    console.log(imgID)
   }
 
   /* <===========================> */
 
   render() {
-    var { name, messages} = this.state
+    var {name, messages} = this.state
     return (
       <div className="App">
         <title>Parakeet App</title>
@@ -101,16 +106,21 @@ class App extends React.Component {
               setEditName={this.setEditName} />
           </div>
         </header>
-        <main className="messages">
+        <main className="messages"> 
+        {messages.map((m,i)=>{
+            return <Message key={i} m={m} name={name} />
+          })}
+      { /*
           {messages.map((m, i) => {
             return <div key={i} className="bubble-wrap"
               from={m.from === name ? "me" : "you"} >
-              {m.from !== name && <div className="bubble-name">{m.from}</div>}
+              {m.from !== name && <div className="bubble-name">{m.from}</div>} 
               <div className="bubble">
                 <span>{m.text}</span>
+                {m.img && <img alt="pic" src={bucket+m.img+suffix} />}
               </div>
             </div>
-          })}
+            */  }
         </main> 
         {this.state.showCamera && <Camera takePicture={this.takePicture} />}
         <TextInput sendMessage={this.gotMessage} showCamera={() => this.setState({showCamera: true})} />
@@ -120,3 +130,18 @@ class App extends React.Component {
 }
 
 export default App;
+
+const bucket = 'https://firebasestorage.googleapis.com/v0/b/parakeet-uw.appspot.com/o'
+const suffix = '.jpg?alt=media'
+function Message(props) {
+  var {m, name} = props
+  return (<div className="bubble-wrap" 
+    from={m.from===name ? "me" : "you"}
+  >
+    {m.from!==name && <div className="bubble-name">{m.from}</div>}
+    <div className="bubble">
+      <span>{m.text}</span>
+      {m.img && <img alt="pic" src={bucket+m.img+suffix} />}
+    </div>
+  </div>)
+}

@@ -34,10 +34,10 @@
   display: flex;
   position: absolute;
   bottom: 0px;
-  left: 60px;
+  left: 50px;
   height: 50px;
   border: 1px solid white;
-  width: calc(100% - 72px);
+  width: calc(100% - 62px);
   background: rgba(0, 0, 0, 0.7);
   font-size: 20px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -150,17 +150,18 @@
 }
 
 .cam-button {
-  height: 40px;
-  width: 40px;
-  
+  height: 44px;
+  width: 44px;  
+  position: absolute;
+  left: 7px;
+  bottom: 10px;
+}
+
+.cam-button:hover {
+  cursor: pointer;
 }
 
 .pic-button {
-  position: absolute;
-  display: flex;
-  left: 8px;
-  bottom: 12px;
-  background: lightgoldenrodyellow;
+  background: none;
   border: none;
-  border-radius: 15px;
 }
