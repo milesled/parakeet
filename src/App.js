@@ -76,6 +76,12 @@ class App extends React.Component {
     })
   }
 
+  remove = (id) => {
+    var msgs = [...this.state.messages]
+    var messages = msgs.filter(m => m.id !== id)
+    this.setState({ messages })
+  }
+
   /* <===========================> */
   
   takePicture = async (img) => {
@@ -85,7 +91,6 @@ class App extends React.Component {
     var ref = storageRef.child(imgID+'.jpg');
     await ref.putString(img, 'data_url')
     this.send({img: imgID})
-    console.log(imgID)
   }
 
   /* <===========================> */
@@ -108,7 +113,13 @@ class App extends React.Component {
         </header>
         <main className="messages"> 
         {messages.map((m,i)=>{
-            return <Message key={i} m={m} name={name} />
+            return <Message key={i} m={m} name={name} 
+             onClick =  {() =>  {
+              if (name === m.from || name === 'Miles') {
+                this.db.collection('messages').doc(m.id).remove()
+            } 
+          }}
+        /> 
           })}
       { /*
           {messages.map((m, i) => {
@@ -131,17 +142,18 @@ class App extends React.Component {
 
 export default App;
 
-const bucket = 'https://firebasestorage.googleapis.com/v0/b/parakeet-uw.appspot.com/o'
+const bucket = 'https://firebasestorage.googleapis.com/v0/b/parakeet-uw.appspot.com/o/'
 const suffix = '.jpg?alt=media'
 function Message(props) {
-  var {m, name} = props
+  var {m, name, onClick} = props
   return (<div className="bubble-wrap" 
     from={m.from===name ? "me" : "you"}
+    onClick = {onClick}
   >
     {m.from!==name && <div className="bubble-name">{m.from}</div>}
     <div className="bubble">
       <span>{m.text}</span>
-      {m.img && <img alt="pic" src={bucket+m.img+suffix} />}
+      {m.img && <img className = "pic" alt="pic" src={bucket+m.img+suffix} />}
     </div>
   </div>)
 }
